@@ -1,0 +1,45 @@
+Name: lnav
+Summary: Log file navigator
+Version: 0.10.1
+Release: 0
+Group: Tools
+License: BSD-2-Clause
+URL: https://lnav.org
+SCM: https://github.com/tstack/lnav
+Sources:
+    # 'https://github.com/tstack/lnav/releases/download/v%{version}/%{name}-%{version}.tar.bz2'
+    - '%{name}-%{version}.tar.gz'
+Description: |
+
+    %if "%{?vendor}" == "chum"
+    PackageName: LNAV -- The Logfile Navigator
+    PackagerName: nephros
+    Type: console-application
+    Categories:
+      - Utility
+      - FileTools
+    Custom:
+      Repo: https://github.com/tstack/lnav
+      PackagingRepo: https://github.com/sailfishos-chum/lnav
+      DescriptionMD: https://raw.githubusercontent.com/tstack/lnav/master/README.md
+    Screenshots:
+      - https://github.com/tstack/lnav/raw/master/docs/assets/images/lnav-syslog.png
+    %endif
+
+#Requires:
+PkgBR:
+    - gcc-c++ # or clang
+    - bzip2-devel
+    - autoconf
+    - automake
+    - '( pkgconfig(readline) or readline-devel )'
+PkgConfigBR:
+    - sqlite3
+    - ncurses
+    - libpcre
+    - zlib
+    - libcurl
+    - libarchive
+SetupOptions: '-q -n %{name}-%{version}/upstream'
+Configure: reconfigure
+Builder: none
