@@ -26,7 +26,9 @@ Description: |
       - https://github.com/tstack/lnav/raw/master/docs/assets/images/lnav-syslog.png
     %endif
 
-#Requires:
+Requires:
+    # C++14 compiler needed, 3.3 Rokua shipped gcc8, before it was 4.9
+    - sailfish-version >= 3.3.0
 PkgBR:
     - gcc-c++ # or clang
     - bzip2-devel
