@@ -30,6 +30,7 @@ Requires:
     # C++14 compiler needed, 3.3 Rokua shipped gcc8, before it was 4.9
     - sailfish-version >= 3.3.0
 PkgBR:
+    - sailfish-version >= 3.3.0
     - gcc-c++ # or clang
     - bzip2-devel
     - autoconf
@@ -44,4 +45,8 @@ PkgConfigBR:
     - libarchive
 SetupOptions: '-q -n %{name}-%{version}/upstream'
 Configure: reconfigure
+ConfigOptions:
+    - 'CFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
+    - 'CXXFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
+
 Builder: none

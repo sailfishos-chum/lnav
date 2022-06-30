@@ -23,6 +23,7 @@ BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  sailfish-version >= 3.3.0
 BuildRequires:  gcc-c++
 BuildRequires:  bzip2-devel
 BuildRequires:  autoconf
@@ -57,7 +58,10 @@ Screenshots:
 # >> build pre
 # << build pre
 
-%reconfigure --disable-static
+%reconfigure --disable-static \
+    CFLAGS="$RPM_OPT_FLAGS -fPIC -pie" \
+    CXXFLAGS="$RPM_OPT_FLAGS -fPIC -pie"
+
 
 # >> build post
 pushd src
