@@ -9,7 +9,7 @@ Name:       lnav
 # << macros
 
 Summary:    Log file navigator
-Version:    0.10.1
+Version:    0.11.1
 Release:    0
 Group:      Tools
 License:    BSD-2-Clause
