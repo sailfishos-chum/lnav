@@ -40,7 +40,7 @@ PkgConfigBR:
     - sqlite3
     - ncurses
     - libpcre
-    - libpcre2-16
+    - libpcre2-8
     - zlib
     - libcurl
     - libarchive

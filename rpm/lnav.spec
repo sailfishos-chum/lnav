@@ -20,7 +20,7 @@ Requires:   sailfish-version >= 3.3.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(libpcre)
-BuildRequires:  pkgconfig(libpcre2-16)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libarchive)
