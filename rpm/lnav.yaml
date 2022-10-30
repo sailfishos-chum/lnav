@@ -37,7 +37,8 @@ PkgBR:
     - automake
     - '( pkgconfig(readline) or readline-devel )'
 PkgConfigBR:
-    - sqlite3
+    # sqlite in SFOS 3.3 is apparently too old to build successfully:
+    - 'sqlite3 > 3.13.0'
     - ncurses
     - libpcre
     - libpcre2-8

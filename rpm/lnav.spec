@@ -17,7 +17,7 @@ URL:        https://lnav.org
 Source0:    %{name}-%{version}.tar.gz
 Source100:  lnav.yaml
 Requires:   sailfish-version >= 3.3.0
-BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(sqlite3) > 3.13.0
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libpcre2-8)
