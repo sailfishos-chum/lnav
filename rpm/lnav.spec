@@ -61,11 +61,12 @@ Screenshots:
 
 %reconfigure --disable-static \
     CFLAGS="$RPM_OPT_FLAGS -fPIC -pie" \
-    CXXFLAGS="$RPM_OPT_FLAGS -fPIC -pie" \
-    LDFLAGS="$LDFLAGS -lz"
+    CXXFLAGS="$RPM_OPT_FLAGS -fPIC -pie"
 
 
 # >> build post
+# out-of-the-box building fails with tools/bin2c.c:84: undefined reference to `compress'
+# as this is only needed for building, lets just compile it manually here:
 pushd tools
 gcc $CFLAGS bin2c.c -o bin2c -lz
 popd

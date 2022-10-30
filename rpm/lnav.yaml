@@ -50,7 +50,5 @@ Configure: reconfigure
 ConfigOptions:
     - 'CFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
     - 'CXXFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
-    #  upstream/src/../tools/bin2c.c:84: undefined reference to `compress'
-    - 'LDFLAGS="$LDFLAGS -lz"'
 
 Builder: none
