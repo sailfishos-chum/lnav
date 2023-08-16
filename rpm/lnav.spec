@@ -8,7 +8,7 @@ Name:       lnav
 # >> macros
 # << macros
 
-Summary:    Log file navigator
+Summary:    An advanced log file viewer for the small-scale
 Version:    0.11.2
 Release:    0
 Group:      Tools
@@ -32,10 +32,11 @@ BuildRequires:  automake
 BuildRequires:  ( pkgconfig(readline) or readline-devel )
 
 %description
+%{summary}.
 
 %if "%{?vendor}" == "chum"
-PackageName: LNAV -- The Logfile Navigator
-PackagerName: nephros
+Title: LNAV -- The Logfile Navigator
+PackagedBy: nephros
 Type: console-application
 Categories:
   - Utility
