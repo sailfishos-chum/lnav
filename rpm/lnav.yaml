@@ -1,6 +1,6 @@
 Name: lnav
 Summary: An advanced log file viewer for the small-scale
-Version: 0.12.0
+Version: 0.14.1
 Release: 0
 Group: Tools
 License: BSD-2-Clause
@@ -12,7 +12,7 @@ Sources:
 Description: |
     %{summary}.
 
-    %if "%{?vendor}" == "chum"
+    %if 0%{?_chum}
     Title: LNAV -- The Logfile Navigator
     PackagedBy: nephros
     Type: console-application
@@ -48,8 +48,11 @@ PkgConfigBR:
     - libarchive
 SetupOptions: '-q -n %{name}-%{version}/upstream'
 Configure: reconfigure
+Builder: none
 ConfigOptions:
     - 'CFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
     - 'CXXFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
 
-Builder: none
+
+Files:
+  - '%{_bindir}/%{name}'
