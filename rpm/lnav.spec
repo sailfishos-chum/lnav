@@ -30,6 +30,7 @@ BuildRequires:  bzip2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ( pkgconfig(readline) or readline-devel )
+BuildRequires:  libunistring-devel
 
 %description
 %{summary}.
@@ -58,11 +59,11 @@ Screenshots:
 
 %build
 # >> build pre
+./autogen.sh
 # << build pre
 
-%reconfigure --disable-static \
-    CFLAGS="$RPM_OPT_FLAGS -fPIC -pie" \
-    CXXFLAGS="$RPM_OPT_FLAGS -fPIC -pie"
+%configure --disable-static \
+    --without-cargo
 
 
 # >> build post
@@ -77,7 +78,6 @@ popd
 # << build post
 
 %install
-rm -rf %{buildroot}
 # >> install pre
 # << install pre
 
