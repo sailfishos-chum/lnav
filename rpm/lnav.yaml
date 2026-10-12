@@ -32,11 +32,13 @@ Requires:
     - sailfish-version >= 3.3.0
 PkgBR:
     - sailfish-version >= 3.3.0
-    - gcc-c++ # or clang
+    #- gcc-c++ # or clang
+    - clang
     - bzip2-devel
     - autoconf
     - automake
     - '( pkgconfig(readline) or readline-devel )'
+    - libunistring-devel
 PkgConfigBR:
     # sqlite in SFOS 3.3 is apparently too old to build successfully:
     - 'sqlite3 > 3.13.0'
@@ -47,11 +49,12 @@ PkgConfigBR:
     - libcurl
     - libarchive
 SetupOptions: '-q -n %{name}-%{version}/upstream'
-Configure: reconfigure
+Configure: configure
 Builder: none
 ConfigOptions:
-    - 'CFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
-    - 'CXXFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
+    # 'CFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
+    # 'CXXFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
+    - '--without-cargo'
 
 
 Files:
