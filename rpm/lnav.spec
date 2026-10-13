@@ -95,6 +95,11 @@ Links:
 # >> build pre
 export CC=clang
 export CXX=clang++
+%if 0%{?sailfishos_version} < 40600
+# src/lnav.cc:2843: undefined reference to `std::filesystem::temp_directory_path[abi:cxx11]()'
+export LDFLAGS="${LDFLAGS} -lstdc++fs"
+%endif
+
 ./autogen.sh
 # << build pre
 
