@@ -25,7 +25,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  sailfish-version >= 3.3.0
-BuildRequires:  gcc-c++
+BuildRequires:  clang
 BuildRequires:  bzip2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -93,6 +93,8 @@ Links:
 
 %build
 # >> build pre
+export CC=clang
+export CXX=clang++
 ./autogen.sh
 # << build pre
 
@@ -103,12 +105,12 @@ Links:
 # >> build post
 # out-of-the-box building fails with tools/bin2c.c:84: undefined reference to `compress'
 # as this is only needed for building, lets just compile it manually here:
-pushd tools
-gcc $CFLAGS bin2c.c -o bin2c -lz
-popd
-pushd src
-%make_build %{?_smp_mflags}
-popd
+#pushd tools
+#gcc $CFLAGS bin2c.c -o bin2c -lz
+#popd
+#pushd src
+%make_build
+#popd
 # << build post
 
 %install
@@ -116,9 +118,10 @@ popd
 # << install pre
 
 # >> install post
-pushd src
+#pushd src
 %make_install
-popd
+#popd
+rm -rf %{buildroot}%{_mandir}
 # << install post
 
 %files
