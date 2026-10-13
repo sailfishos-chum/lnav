@@ -95,37 +95,41 @@ Links:
 # >> build pre
 export CC=clang
 export CXX=clang++
+
 %if 0%{?sailfishos_version} < 40600
 # src/lnav.cc:2843: undefined reference to `std::filesystem::temp_directory_path[abi:cxx11]()'
+export CXXFLAGS="%{optflags} ${CXXFLAGS} -std=c++17 -stdlib=libstdc++"
 export LDFLAGS="${LDFLAGS} -lstdc++fs"
+# options:
+# -std=c++17 -stdlib=libstdc++ -lstdc++fs
+# -std=c++17 -stdlib=libc++ -lc++fs
 %endif
 
+# These are warned about a lot:
+NOWARNFLAGS="-Wno-unused-result -Wno-missing-braces"
+export CFLAGS="${CFLAGS} ${NOWARNFLAGS}"
+export CXXFLAGS="${CXXFLAGS} ${NOWARNFLAGS}"
+
+# some ar clutter:
+export AR_FLAGS="cr"
+export ARFLAGS="cr"
 ./autogen.sh
 # << build pre
 
 %configure --disable-static \
     --without-cargo
 
+%make_build
 
 # >> build post
-# out-of-the-box building fails with tools/bin2c.c:84: undefined reference to `compress'
-# as this is only needed for building, lets just compile it manually here:
-#pushd tools
-#gcc $CFLAGS bin2c.c -o bin2c -lz
-#popd
-#pushd src
-%make_build
-#popd
 # << build post
 
 %install
 # >> install pre
 # << install pre
+%make_install
 
 # >> install post
-#pushd src
-%make_install
-#popd
 rm -rf %{buildroot}%{_mandir}
 # << install post
 

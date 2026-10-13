@@ -83,10 +83,8 @@ PkgConfigBR:
     - libarchive
 SetupOptions: '-q -n %{name}-%{version}/upstream'
 Configure: configure
-Builder: none
+Builder: make
 ConfigOptions:
-    # 'CFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
-    # 'CXXFLAGS="$RPM_OPT_FLAGS -fPIC -pie"'
     - '--without-cargo'
 
 
