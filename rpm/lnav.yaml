@@ -61,22 +61,22 @@ Description: |
       Help: https://docs.lnav.org/en/v0.14.0/
     %endif
 
-Requires:
-    # C++14 compiler needed, 3.3 Rokua shipped gcc8, before it was 4.9
-    - sailfish-version >= 3.3.0
+#Requires:
+#    # C++14 compiler needed, 3.3 Rokua shipped gcc8, before it was 4.9
+#    - sailfish-version >= 3.3.0
 PkgBR:
-    - sailfish-version >= 3.3.0
+    # sailfish-version >= 3.3.0
     #- gcc-c++ # or clang
-    - clang
+    - clang # or gcc-c++
     - bzip2-devel
     - autoconf
     - automake
     - '( pkgconfig(readline) or readline-devel )'
     - libunistring-devel
 PkgConfigBR:
-    - 'sqlite3 > 3.9.0'
+    - 'sqlite3 >= 3.9.0'
     - ncurses
-    - libpcre
+    # libpcre
     - libpcre2-8
     - zlib
     - libcurl
@@ -86,7 +86,7 @@ Configure: configure
 Builder: make
 ConfigOptions:
     - '--without-cargo'
-
-
 Files:
+  - '%license LICENSE'
+  - '%doc README.md'
   - '%{_bindir}/%{name}'

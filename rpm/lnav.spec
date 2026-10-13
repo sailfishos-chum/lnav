@@ -16,15 +16,12 @@ License:    BSD-2-Clause
 URL:        https://lnav.org
 Source0:    %{name}-%{version}.tar.gz
 Source100:  lnav.yaml
-Requires:   sailfish-version >= 3.3.0
-BuildRequires:  pkgconfig(sqlite3) > 3.9.0
+BuildRequires:  pkgconfig(sqlite3) >= 3.9.0
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  sailfish-version >= 3.3.0
 BuildRequires:  clang
 BuildRequires:  bzip2-devel
 BuildRequires:  autoconf
@@ -134,6 +131,8 @@ rm -rf %{buildroot}%{_mandir}
 # << install post
 
 %files
+%license LICENSE
+%doc README.md
 %{_bindir}/%{name}
 # >> files
 # << files
