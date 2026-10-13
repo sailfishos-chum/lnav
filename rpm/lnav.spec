@@ -17,7 +17,7 @@ URL:        https://lnav.org
 Source0:    %{name}-%{version}.tar.gz
 Source100:  lnav.yaml
 Requires:   sailfish-version >= 3.3.0
-BuildRequires:  pkgconfig(sqlite3) > 3.13.0
+BuildRequires:  pkgconfig(sqlite3) > 3.9.0
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -33,7 +33,38 @@ BuildRequires:  ( pkgconfig(readline) or readline-devel )
 BuildRequires:  libunistring-devel
 
 %description
-%{summary}.
+
+LNAV -- The Logfile Navigator
+
+The Logfile Navigator is a log file viewer for the terminal.  Given a set of files/directories, lnav will:
+
+- decompress as needed;
+- detect their format;
+- merge the files by time into a single view;
+- tail the files, follow renames, find new files in directories;
+- build an index of errors and warnings;
+- [pretty-print JSON-lines](https://docs.lnav.org/en/latest/formats.html#json-lines).
+
+Then, in the lnav TUI, you can:
+
+- jump quickly to the previous/next error ([press `e`/`E`](https://docs.lnav.org/en/latest/hotkeys.html#spatial-navigation));
+- search using regular expressions ([press `/`](https://docs.lnav.org/en/latest/hotkeys.html#spatial-navigation));
+- highlight text with a regular expression ([`:highlight`](https://docs.lnav.org/en/latest/commands.html#highlight-pattern) command);
+- filter messages using [regular expressions](https://docs.lnav.org/en/latest/usage.html#regular-expression-match) or [SQLite expressions](https://docs.lnav.org/en/latest/usage.html#sqlite-expression);
+- pretty-print structured text ([press `P`](https://docs.lnav.org/en/latest/ui.html#pretty));
+- view a histogram of messages over time ([press `i`](https://docs.lnav.org/en/latest/ui.html#hist));
+- analyze messages using SQLite ([press `;`](https://docs.lnav.org/en/latest/sqlext.html))
+
+
+You can SSH into a demo node to play with lnav before installing.
+
+The "playground" account starts lnav with a couple of log files as an example:
+
+ssh playground@demo.lnav.org
+
+The "tutorial 1" account is an interactive tutorial that can teach you the basics of operation:
+
+ssh tutorial1@demo.lnav.org
 
 %if 0%{?_chum}
 Title: LNAV -- The Logfile Navigator
@@ -47,7 +78,10 @@ Custom:
   PackagingRepo: https://github.com/sailfishos-chum/lnav
   DescriptionMD: https://raw.githubusercontent.com/tstack/lnav/master/README.md
 Screenshots:
+  - %{url}/docs/assets/images/lnav-front-page.png
   - https://github.com/tstack/lnav/raw/master/docs/assets/images/lnav-syslog.png
+Links:
+  Help: https://docs.lnav.org/en/v0.14.0/
 %endif
 
 
